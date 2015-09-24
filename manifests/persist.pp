@@ -9,7 +9,7 @@
 #
 class redis::persist (
   $manage_persistence = $redis::manage_persistence,
-  $crontab_target = 'user',
+  $crontab_target     = 'user',
 ) {
 
   $ensure = $manage_persistence ? {
