@@ -33,7 +33,7 @@ class redis::persist (
   # $config_script if the role has changed.
   cron { 'redis persistence':
     ensure  => $ensure,
-    command => $config_script,
+    command => "${config_script} >/dev/null 2>&1",
     hour    => '*',
     minute  => ['0-59'],
     require => File[ $config_script ],
