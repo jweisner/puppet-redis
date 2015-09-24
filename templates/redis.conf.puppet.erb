@@ -184,7 +184,7 @@ dbfilename dump.rdb
 # The Append Only File will also be created inside this directory.
 # 
 # Note that you must specify a directory here, not a file name.
-<% if @config['dir'] -%>
+<% if @config['dir'] != nil and @config['dir'] != '' -%>
 dir <%= @config['dir'] %>
 <% else -%>
 dir ./
@@ -198,7 +198,7 @@ dir ./
 # different interval, or to listen to another port, and so on.
 #
 # slaveof <masterip> <masterport>
-<% if @slaveof -%>
+<% if @slaveof != nil and @slaveof != '' -%>
 slaveof <%= @slaveof %> 6379
 <% end -%>
 
