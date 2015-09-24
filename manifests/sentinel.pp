@@ -5,6 +5,7 @@
 # === Parameters
 #
 # $redis_clusters - This is a hash that defines the redis clusters
+# $service_name - Sentinel service name
 # that sentinel should watch.
 #
 # === Examples
@@ -27,6 +28,7 @@
 #
 class redis::sentinel (
   $version        = 'installed',
+  $service_name   = 'sentinel',
   $redis_clusters = undef,
 ) {
 
@@ -64,6 +66,7 @@ class redis::sentinel (
   service { 'sentinel':
     ensure     => running,
     enable     => true,
+    name       => $service_name,
     hasrestart => true,
     hasstatus  => true,
     require    => Package['redis'],
