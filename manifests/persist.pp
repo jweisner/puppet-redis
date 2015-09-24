@@ -9,7 +9,6 @@
 #
 class redis::persist (
   $manage_persistence = $redis::manage_persistence,
-  $crontab_target     = 'user',
 ) {
 
   $ensure = $manage_persistence ? {
@@ -37,7 +36,6 @@ class redis::persist (
     command => "${config_script} >/dev/null 2>&1",
     hour    => '*',
     minute  => ['0-59'],
-    target  => $crontab_target,
     require => File[ $config_script ],
   }
 
